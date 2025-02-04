@@ -11,14 +11,34 @@
             padding: 0;
             height: 100%;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .progress-bar-container {
+            width: 80%;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            display: none;
+            margin-top: 20px;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: #4caf50;
+            transition: width 5s linear;
+        }
+        #gameContainer {
+            display: none;
+            width: 100%;
+            height: 100vh;
         }
         iframe {
             width: 100%;
             height: 100%;
             border: none;
-            position: absolute;
-            top: 0;
-            left: 0;
         }
     </style>
 </head>
@@ -27,21 +47,18 @@
         <h3>Introdueix la contrasenya per anar a: Google Classroom</h3>
         <input type="password" id="passwordInput" placeholder="Contrasenya">
         <button onclick="checkPassword()">Accedir</button>
-        <p id="errorMessage" class="error" style="display: none;">Contrasenya incorrecta. Prova-ho de nou.</p>
-        <p id="attemptsMessage" class="error" style="display: none;"></p>
+        <p id="errorMessage" class="error" style="display: none; color: red;">Contrasenya incorrecta. Prova-ho de nou.</p>
+        <p id="attemptsMessage" class="error" style="display: none; color: red;"></p>
     </div>
     
     <div id="progressBarContainer" class="progress-bar-container">
-        <div class="progress-bar"></div>
+        <div class="progress-bar" id="progressBar"></div>
     </div>
-    <div class="game-container">
+    
+    <div id="gameContainer">
         <iframe src="https://yolk.best" allow="fullscreen; scripts; autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
-    <div id="redirectMessage" style="display: none; text-align: center; margin-top: 20px;">
-        <p>Hi ha hagut un error en la redirecció, pots continuar en el següent enllaç: 
-        <a href="https://classroom.google.com" target="_blank">Google Classroom</a></p>
-    </div>
-   
+    
     <script>
         let failedAttempts = 0;
         const maxAttempts = 2;
@@ -57,9 +74,10 @@
             if (passwordValue === correctPassword) {
                 document.getElementById("passwordForm").style.display = "none";
                 document.getElementById("progressBarContainer").style.display = "block";
+                document.getElementById("progressBar").style.width = "100%";
                 setTimeout(() => {
                     document.getElementById("progressBarContainer").style.display = "none";
-                    document.getElementById("content").style.display = "block";
+                    document.getElementById("gameContainer").style.display = "block";
                 }, 5000);
             } else {
                 failedAttempts++;
@@ -67,17 +85,13 @@
                 document.getElementById("attemptsMessage").style.display = "block";
                 document.getElementById("attemptsMessage").innerText = "Intents restants: " + attemptsLeft;
                 
-                passwordInput.classList.add("shake");
-                setTimeout(() => {
-                    passwordInput.classList.remove("shake");
-                }, 300);
-                
                 if (failedAttempts >= maxAttempts) {
                     document.getElementById("passwordForm").style.display = "none";
                     document.getElementById("progressBarContainer").style.display = "block";
+                    document.getElementById("progressBar").style.width = "100%";
                     setTimeout(() => {
                         document.getElementById("progressBarContainer").style.display = "none";
-                        document.getElementById("redirectMessage").style.display = "block";
+                        alert("Has exhaurit els intents. No pots accedir.");
                     }, 5000);
                 } else {
                     document.getElementById("errorMessage").style.display = "block";
