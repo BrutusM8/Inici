@@ -6,46 +6,19 @@
     <title>Inici</title>
     <link rel="icon" href="https://github.com/BrutusM8/Inici/blob/4caef1512dbfdd08158e27aafe524fe00cdef242/classroom_32x32_ico.ico" type="image/x-icon">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .success {
-            color: green;
-            font-weight: bold;
-        }
-        .error {
-            color: red;
-            font-weight: bold;
-        }
-        .progress-bar-container {
-            width: 100%;
-            height: 5px;
-            background-color: lightgray;
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: none;
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
             overflow: hidden;
         }
-        .progress-bar {
-            height: 100%;
+        iframe {
             width: 100%;
-            background-color: blue;
-            animation: loading 1s linear infinite;
-        }
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
-        }
-        .shake {
-            animation: shake 0.3s ease-in-out;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     </style>
 </head>
@@ -62,7 +35,7 @@
         <div class="progress-bar"></div>
     </div>
     
-    <div id="content" style="display: none; text-align: center;">
+    <div id="content" style="display: none;">
         <iframe src="https://yolk.best" allow="fullscreen; scripts; autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
     
