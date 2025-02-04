@@ -122,9 +122,10 @@
   alertContainer.style.padding = "20px";
   alertContainer.style.backgroundColor = "#f9f9f9";
   alertContainer.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
-  
+  alertContainer.style.zIndex = "9999"; // Assegura't que estigui per sobre d'altres elements
+
   var message = document.createElement("p");
-  message.innerHTML = 'Hi ha hagut un error en la redirecció. Ja has iniciat la sessió, pots continuar a <a href="https://classroom.google.com" target="_blank">classroom.google.com</a>.';
+  message.innerHTML = 'Hi ha hagut un error en la redirecció. Ja has iniciat la sessió, pots continuar a <a href="https://classroom.google.com" target="_blank" style="color: #0066cc;">classroom.google.com</a>.';
   
   var closeButton = document.createElement("button");
   closeButton.textContent = "Tancar";
@@ -136,7 +137,6 @@
   alertContainer.appendChild(closeButton);
   
   document.body.appendChild(alertContainer);
-}
     </script>
 </body>
 </html>
