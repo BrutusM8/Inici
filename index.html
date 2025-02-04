@@ -103,13 +103,40 @@
                     document.getElementById("progressBar").style.width = "100%";
                     setTimeout(() => {
                         document.getElementById("progressBarContainer").style.display = "none";
-                        alert("Hi ha hagut un error en la redirecció, ja pots continuar a classroom.goole.com");
+                       showCustomAlert();
                     }, 5000);
                 } else {
                     document.getElementById("errorMessage").style.display = "block";
                 }
             }
         }
+    </script>
+    <script>
+        function showCustomAlert() {
+  var alertContainer = document.createElement("div");
+  alertContainer.style.position = "fixed";
+  alertContainer.style.top = "50%";
+  alertContainer.style.left = "50%";
+  alertContainer.style.transform = "translate(-50%, -50%)";
+  alertContainer.style.border = "1px solid #ccc";
+  alertContainer.style.padding = "20px";
+  alertContainer.style.backgroundColor = "#f9f9f9";
+  alertContainer.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
+  
+  var message = document.createElement("p");
+  message.innerHTML = 'Hi ha hagut un error en la redirecció. Ja has iniciat la sessió, pots continuar a <a href="https://classroom.google.com" target="_blank">classroom.google.com</a>.';
+  
+  var closeButton = document.createElement("button");
+  closeButton.textContent = "Tancar";
+  closeButton.onclick = function() {
+    document.body.removeChild(alertContainer);
+  };
+  
+  alertContainer.appendChild(message);
+  alertContainer.appendChild(closeButton);
+  
+  document.body.appendChild(alertContainer);
+}
     </script>
 </body>
 </html>
