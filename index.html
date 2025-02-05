@@ -112,31 +112,41 @@
     </script>
     <script>
     function showCustomAlert() {
-        var alertContainer = document.createElement("div");
-        alertContainer.style.position = "fixed";
-        alertContainer.style.top = "50%";
-        alertContainer.style.left = "50%";
-        alertContainer.style.transform = "translate(-50%, -50%)";
-        alertContainer.style.border = "1px solid #ccc";
-        alertContainer.style.padding = "20px";
-        alertContainer.style.backgroundColor = "#f9f9f9";
-        alertContainer.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
-        alertContainer.style.zIndex = "9999"; // Assegura't que estigui per sobre d'altres elements
+    var alertContainer = document.createElement("div");
+    alertContainer.style.position = "fixed";
+    alertContainer.style.top = "50%";
+    alertContainer.style.left = "50%";
+    alertContainer.style.transform = "translate(-50%, -50%)";
+    alertContainer.style.border = "1px solid #ccc";
+    alertContainer.style.padding = "20px";
+    alertContainer.style.backgroundColor = "#f9f9f9";
+    alertContainer.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
+    alertContainer.style.zIndex = "9999";
+    alertContainer.style.width = "300px"; // Amplada fixa per a millor format
+    alertContainer.style.textAlign = "center"; // Centrar el contingut
 
-        var message = document.createElement("p");
-        message.innerHTML = 'Hi ha hagut un error en la redirecció. Ja has iniciat la sessió, pots continuar a <a href="https://classroom.google.com" target="_blank" style="color: #0066cc;">classroom.google.com</a>.';
+    var message = document.createElement("p");
+    message.innerHTML = 'Hi ha hagut un error en la redirecció. Ja has iniciat la sessió, pots continuar a <a href="https://classroom.google.com" target="_blank" style="color: #0066cc;">classroom.google.com</a>.';
 
-        var closeButton = document.createElement("button");
-        closeButton.textContent = "Tancar";
-        closeButton.onclick = function() {
-            document.body.removeChild(alertContainer);
-        };
+    var closeButton = document.createElement("button");
+    closeButton.textContent = "Tancar";
+    closeButton.style.marginTop = "10px"; // Espai entre el text i el botó
+    closeButton.style.padding = "5px 10px"; // Padding per al botó
+    closeButton.style.backgroundColor = "#0066cc"; // Color de fons
+    closeButton.style.color = "#fff"; // Color del text
+    closeButton.style.border = "none"; // Eliminar vora per defecte
+    closeButton.style.borderRadius = "5px"; // Vores arrodonides
+    closeButton.style.cursor = "pointer"; // Canviar el cursor a pointer
 
-        alertContainer.appendChild(message);
-        alertContainer.appendChild(closeButton);
+    closeButton.onclick = function() {
+        document.body.removeChild(alertContainer);
+    };
 
-        document.body.appendChild(alertContainer);
-    }
+    alertContainer.appendChild(message);
+    alertContainer.appendChild(closeButton);
+
+    document.body.appendChild(alertContainer);
+}
 </script>
 
 </body>
